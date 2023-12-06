@@ -1,8 +1,7 @@
 // Get funds from users
-// Users can fund either BTC, ETH, USDC, GBP, EUR
+// Users can fund either BTC, USD, USDC, GBP, EUR, or native ETH
 // Only Admin can pull out funds
 // Minimum funding value is set to $100
-// I have set native currency of the smart contract to be USD, so check Library3.sol for manipulations
 
 // ETH/USD: 0x694AA1769357215DE4FAC081bf1f309aDC325306
 // BTC/USD: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43
@@ -18,14 +17,11 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/Ag
 
 contract Fund3 {
 
-    uint256 public minFund = 100;
-
-    // events declared for the getPrice() functions
-    
+    uint256 public minFund = 100e18;
 
     // function to fund with ETH
     function fundETH() public payable {
-        require(ETHAmountin$(msg.value) >= minFund, "Amount too low!");
+        require(ETHAmountin$(msg.value) >= minFund, "ETH amount is too low!");
     }
 
     // function to get price of ETH in USD
@@ -40,7 +36,7 @@ contract Fund3 {
     // function to convert msg.value to its converted value based off its ETH price (getETHPrice) 
     function ETHAmountin$(uint256 amount) public view returns(uint256) {
         uint256 ETHPrice = getETHPrice();
-        uint256 ETHAmountInUSD = (amount * ETHPrice * 1e18) / 1e18;
+        uint256 ETHAmountInUSD = (amount * ETHPrice);
         return ETHAmountInUSD;
     }
 
@@ -61,7 +57,7 @@ contract Fund3 {
     // function to convert msg.value to its converted value based off its BTC price (getBTCPrice)
     function BTCAmountin$(uint256 amount) public view returns(uint256) {
         uint256 BTCPrice = getBTCPrice();
-        uint256 BTCAmountUSD = (amount * BTCPrice * 1e18) / 1e18;
+        uint256 BTCAmountUSD = (amount * BTCPrice);
         return BTCAmountUSD;
     }
 
@@ -69,6 +65,41 @@ contract Fund3 {
     function getBTCDecimal() public view returns(uint8) {
         return AggregatorV3Interface(0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43).decimals();
     }
+
+    // function to get price of BTC in native ETH
+    function BTCinETH() public view returns(uint256) {
+        uint256 BTCPriceinUSD = getBTCPrice();
+        uint256 ETHPriceinUSD = getETHPrice();
+        uint256 BTCinETHPrice = (BTCPriceinUSD * 1e18) / ETHPriceinUSD;
+        return BTCinETHPrice;
+    }
+
+    // function to get price of USDC in native ETH
+    function USDCinETH() public view returns(uint256) {
+        uint256 USDCPriceinUSD = getUSDCPrice();
+        uint256 ETHPriceinUSD = getETHPrice();
+        uint256 USDCinETHPrice = (USDCPriceinUSD * 1e18) / ETHPriceinUSD;
+        return USDCinETHPrice;
+    }
+
+    // function to get price of GBP in native ETH
+    function GBPinETH() public view returns(uint256) {
+        uint256 GBPPriceinUSD = getGBPPrice();
+        uint256 ETHPriceinUSD = getETHPrice();
+        uint256 GBPinETHPrice = (GBPPriceinUSD * 1e18) / ETHPriceinUSD;
+        return GBPinETHPrice;
+    }
+
+    // function to get price of EUR in native ETH
+    function EURinETH() public view returns(uint256) {
+        uint256 EURPriceinUSD = getEURPrice();
+        uint256 ETHPriceinUSD = getETHPrice();
+        uint256 EURinETHPrice = (EURPriceinUSD * 1e18) / ETHPriceinUSD;
+        return EURinETHPrice;
+    }
+
+    // function to get price of USD in native ETH
+    function USDinETH() public view returns(uint256) {}
 
     // function to get price of EUR in USD
     function getEURPrice() public view returns(uint256) {
@@ -82,7 +113,7 @@ contract Fund3 {
     // function to convert msg.value to its converted value based off its EUR price (getEURPrice)
     function EURAmountin$(uint256 amount) public view returns(uint256) {
         uint256 EURPrice = getEURPrice();
-        uint256 EURAmountinUSD = (amount * EURPrice * 1e18) / 1e18;
+        uint256 EURAmountinUSD = (amount * EURPrice);
         return EURAmountinUSD;
     }
 
@@ -103,7 +134,7 @@ contract Fund3 {
     // function to convert msg.value to its converted value based off its GBP price (getGBPPrice)
     function GBPAmountin$(uint256 amount) public view returns(uint256) {
         uint256 GBPPrice = getGBPPrice();
-        uint256 GBPAmountinUSD = (amount * GBPPrice * 1e18) / 1e18;
+        uint256 GBPAmountinUSD = (amount * GBPPrice);
         return GBPAmountinUSD;
     }
 
@@ -124,7 +155,7 @@ contract Fund3 {
     // function to convert msg.value to its converted value based off its USDC price (getUSDCPrice)
     function USDCAmountin$(uint256 amount) public view returns(uint256) {
         uint256 USDCPrice = getUSDCPrice();
-        uint256 USDCAmountinUSD = (amount * USDCPrice * 1e18) / 1e18;
+        uint256 USDCAmountinUSD = (amount * USDCPrice);
         return USDCAmountinUSD;
     }
 
