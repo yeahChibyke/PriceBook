@@ -10,7 +10,8 @@ contract USDPriceBook {
         AggregatorV3Interface ETHperUSD_Price = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
         ( , int256 answer, , , ) = ETHperUSD_Price.latestRoundData();
         // typecast answer from int256 to uint256
-        // answer is in 1e8 (check getETHperUSD_Decimal in DecimalLibrary to confirm), multiply by 1e10 to ensure precision
+        // multiply by 1e10 to ensure precision
+            // msg.value is in 1e18, and answer is in 1e8 (check getETHperUSD_Decimal in DecimalLibrary to confirm)
         return uint256(answer * 1e10);
     }
 
@@ -19,7 +20,8 @@ contract USDPriceBook {
         AggregatorV3Interface BTCperUSD_Price = AggregatorV3Interface(0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43);
         ( , int256 answer, , , ) = BTCperUSD_Price.latestRoundData();
         // typecast answer from int256 to uint256
-        // answer is in 1e8 (check getBTCperUSD_Decimal in DecimalLibrary to confirm), multiply by 1e10 to ensure precision
+        // multiply by 1e10 to ensure precision
+            // msg.value is in 1e18, and answer is in 1e8 (check getBTCperUSD_Decimal in DecimalLibrary to confirm)
         return uint256(answer * 1e10);
     }
 
@@ -28,7 +30,8 @@ contract USDPriceBook {
         AggregatorV3Interface EURperUSD_Price = AggregatorV3Interface(0x1a81afB8146aeFfCFc5E50e8479e826E7D55b910);
         ( , int256 answer, , , ) = EURperUSD_Price.latestRoundData();
         // typecast answer from int256 to uint256
-        // answer is in 1e8 (check getEURperUSD_Decimal in DecimalLibrary to confirm), multiply by 1e10 to ensure precision
+        // multiply by 1e10 to ensure precision
+            // msg.value is in 1e18, and answer is in 1e8 (check getEURperUSD_Decimal in DecimalLibrary to confirm)
         return uint256(answer * 1e10);
     }
 
@@ -37,7 +40,8 @@ contract USDPriceBook {
         AggregatorV3Interface GBPperUSD_Price = AggregatorV3Interface(0x91FAB41F5f3bE955963a986366edAcff1aaeaa83);
         ( , int256 answer, , , ) = GBPperUSD_Price.latestRoundData();
         // typecast answer from int256 to uint256
-        // answer is in 1e8 (check getGBPperUSD_Decimal in DecimalLibrary to confirm), multiply by 1e10 to ensure precision
+        // multiply by 1e10 to ensure precision
+            // msg.value is in 1e18, and answer is in 1e8 (check getGBPperUSD_Decimal in DecimalLibrary to confirm)
         return uint256(answer * 1e10);
     }
 
@@ -46,7 +50,8 @@ contract USDPriceBook {
         AggregatorV3Interface LINKperUSD_Price = AggregatorV3Interface(0xc59E3633BAAC79493d908e63626716e204A45EdF);
         ( , int256 answer, , , ) = LINKperUSD_Price.latestRoundData();
         // typecast answer from int256 to uint256
-        // answer is in 1e8 (check getLINKperUSD_Decimal in DecimalLibrary to confirm), multiply by 1e10 to ensure precision
+        // multiply by 1e10 to ensure precision
+            // msg.value is in 1e18, and answer is in 1e8 (check getLINKperUSD_Decimal in DecimalLibrary to confirm)
         return uint256(answer * 1e10);
     }
 
@@ -55,7 +60,8 @@ contract USDPriceBook {
         AggregatorV3Interface USDCperUSD_Price = AggregatorV3Interface(0xA2F78ab2355fe2f984D808B5CeE7FD0A93D5270E);
         ( , int256 answer, , , ) = USDCperUSD_Price.latestRoundData();
         // typecast answer from int256 to uint256
-        // answer is in 1e8 (check getUSDCperUSD_Decimal in DecimalLibrary to confirm), multiply by 1e10 to ensure precision
+        // multiply by 1e10 to ensure precision
+            // msg.value is in 1e18, and answer is in 1e8 (check getUSDCperUSD_Decimal in DecimalLibrary to confirm)
         return uint256(answer * 1e10);
     }
 }
