@@ -5,7 +5,7 @@ import {USDPriceBook} from "./USDPriceBook.sol";
 
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
-contract ETHPriceBook is USDPriceBook {
+contract ETHPriceBook  {
 
     // using USDPriceBook for uint256;
 
@@ -26,16 +26,16 @@ contract ETHPriceBook is USDPriceBook {
 
     // function to get price of EUR per ETH
     function getEURperETH_Price() public view returns(uint256) {
-        uint256 EURperUSD_Price = getEURperUSD_Price();
-        uint256 ETHperUSD_Price = getETHperUSD_Price();
+        uint256 EURperUSD_Price = USDPriceBook.getEURperUSD_Price();
+        uint256 ETHperUSD_Price = USDPriceBook.getETHperUSD_Price();
         uint256 EURperETH_Price = (EURperUSD_Price * 1e18) / ETHperUSD_Price;
         return EURperETH_Price; 
     }
 
     // function to get price of GBP per ETH
     function getGBPperETH_Price() public view returns(uint256) {
-        uint256 GBPperUSD_Price = getGBPperUSD_Price();
-        uint256 ETHperUSD_Price = getETHperUSD_Price();
+        uint256 GBPperUSD_Price = USDPriceBook.getGBPperUSD_Price();
+        uint256 ETHperUSD_Price = USDPriceBook.getETHperUSD_Price();
         uint256 GBPperETH_Price = (GBPperUSD_Price * 1e18) / ETHperUSD_Price;
         return GBPperETH_Price;
     }
@@ -50,15 +50,15 @@ contract ETHPriceBook is USDPriceBook {
 
     // function to get price of USDC per ETH
     function getUSDCperETH_Price() public view returns(uint256) {
-        uint256 USDCperUSD_Price = getUSDCperUSD_Price();
-        uint256 ETHperUSD_Price = getETHperUSD_Price();
+        uint256 USDCperUSD_Price = USDPriceBook.getUSDCperUSD_Price();
+        uint256 ETHperUSD_Price = USDPriceBook.getETHperUSD_Price();
         uint256 USDCperETH_Price = (USDCperUSD_Price * 1e18) / ETHperUSD_Price;
         return USDCperETH_Price;
     }
 
     // function to get price of USD per ETH
     function getUSDperETH_Price() public view returns(uint256) {
-        uint256 ETHperUSD_Price = getETHperUSD_Price();
+        uint256 ETHperUSD_Price = USDPriceBook.getETHperUSD_Price();
         uint256 USDperUSD_Price = 1e18;
         uint256 USDperETH_Price = (USDperUSD_Price * 1e18) / ETHperUSD_Price;
         return USDperETH_Price;
