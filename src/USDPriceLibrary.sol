@@ -3,7 +3,7 @@ pragma solidity ^ 0.8.0;
 
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
-library USDPriceBook {
+library USDPriceLibrary {
     
     // function to get price of ETH per USD
     function getETHperUSD_Price() internal view returns(uint256) {

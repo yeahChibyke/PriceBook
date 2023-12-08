@@ -1,6 +1,6 @@
-## Foundry
+# PriceBook
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**PriceBook is a comprehensive collection of smart contracts designed to provide price feeds for a diverse range of currency and asset pairings not available on Chainlink for the Sepolia Testnet. This repository is dedicated to offering accurate and real-world prices for popular assets and currencies based on Bitcoin (BTC), Ethereum (ETH), Euro (EUR), and United States Dollar (USD).**
 
 Foundry consists of:
 
