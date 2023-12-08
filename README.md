@@ -1,3 +1,5 @@
+![](PriceBook.jpg)
+
 # PriceBook
 
 **PriceBook is a comprehensive collection of smart contracts designed to provide price feeds for a diverse range of currency and asset pairings not available on Chainlink for the Sepolia Testnet. This repository is dedicated to offering accurate and real-world prices for popular assets and currencies based on Bitcoin (BTC), Ethereum (ETH), Euro (EUR), and United States Dollar (USD).  
@@ -23,13 +25,13 @@
 
 - ### Clone the Repository:
 ```shell
-$ git clone https://github.com/yeahChibyke/PriceBook.git
+ git clone https://github.com/yeahChibyke/PriceBook.git
 cd PriceBook
 ```
 
 - ### Install dependencies:
 ```shell
-$ npm install
+ npm install
 ```
 
 - ### Deploy Smart Contracts:
